@@ -93,11 +93,16 @@ main { position: relative; max-width: 1420px; min-height: calc(100vh - 74px); ma
 .search-field svg { color: #8b887f; }
 .search-field input { width: 100%; padding: 9px 0; border: 0; outline: none; background: transparent; font-size: 13px; }
 
-.table-scroll { overflow-x: auto; }
+.table-scroll {
+  max-height: min(68vh, 760px);
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
 table { width: 100%; min-width: 1120px; border-collapse: collapse; font-variant-numeric: tabular-nums; }
 th, td { padding: 13px 15px; border-bottom: 1px solid #eeeae1; text-align: right; vertical-align: middle; }
 th:first-child, td:first-child { position: sticky; left: 0; z-index: 2; text-align: left; }
-thead th { position: sticky; top: 73px; z-index: 3; color: #f9f7f1; background: #373731; font-size: 11px; font-weight: 600; white-space: nowrap; }
+thead th { position: sticky; top: 0; z-index: 3; color: #f9f7f1; background: #373731; font-size: 11px; font-weight: 600; white-space: nowrap; }
 thead th:first-child { z-index: 4; background: #373731; }
 tbody td { background: #fff; font-size: 13px; }
 tbody tr:nth-child(even) td { background: #fbfaf7; }
@@ -156,6 +161,7 @@ footer { justify-content: center; gap: 7px; padding: 28px 0 0; color: #858178; f
   .modal { padding: 18px; }
   .filters > * { width: 100%; }
   .chart-wrap { height: 360px; }
+  .table-scroll { max-height: 65vh; }
 }
 
 @media print {
@@ -166,7 +172,7 @@ footer { justify-content: center; gap: 7px; padding: 28px 0 0; color: #858178; f
   .kpi-grid { grid-template-columns: repeat(4, 1fr); }
   .kpi-card { min-height: 120px; box-shadow: none; break-inside: avoid; }
   .panel { box-shadow: none; }
-  .table-scroll { overflow: visible; }
+  .table-scroll { max-height: none; overflow: visible; }
   table { min-width: 0; font-size: 9px; }
   th, td { position: static !important; padding: 7px 6px; }
 }
